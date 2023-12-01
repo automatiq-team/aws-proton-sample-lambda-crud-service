@@ -107,6 +107,7 @@ class Task
       item.description = description unless description.nil?
       item.status = status unless status.nil?
       item.updated_at = now
+      item.assign_attributes(task_id: "#{now.to_i}_#{SecureRandom.uuid}", table_name: "TASK")
       if item.save
         [item, nil]
       else
